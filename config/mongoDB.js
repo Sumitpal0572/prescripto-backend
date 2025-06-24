@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
-MONGODB_URI = "mongodb://localhost:27017";
 
 const connectDB = async () => {
   try {
     mongoose.connection.on("connected", () =>
       console.log("Database Connected")
     );
-    mongoose.connect(`${MONGODB_URI}/prescripto`);
+    mongoose.connect(process.env.MONGODB_URI);
   } catch (error) {
     console.log(error);
   }
